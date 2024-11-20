@@ -1,8 +1,3 @@
-    <?php 
-        require_once __DIR__ . '/../controllers/inicio.part.php';
-        require_once __DIR__ . "/../controllers/navegacion.part.php"; 
-    ?>
-
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
@@ -289,5 +284,3 @@
         </div>
     </div>
     <!-- Testimonial End -->
-
-    <?php require_once __DIR__ . '/../controllers/fin.part.php'; ?>

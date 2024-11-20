@@ -1,8 +1,3 @@
-    <?php 
-        require_once __DIR__ . '/../controllers/inicio.part.php';
-        require_once __DIR__ . "/../controllers/navegacion.part.php"; 
-    ?>
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
@@ -72,5 +67,3 @@
         </div>
     </div>
     <!-- About End -->
-
-    <?php require_once __DIR__ . '/../controllers/fin.part.php'; ?>

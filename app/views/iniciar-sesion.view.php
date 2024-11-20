@@ -1,6 +1,6 @@
     <?php 
-        require_once __DIR__ . '/../controllers/inicio.part.php';
-        require_once __DIR__ . "/../controllers/navegacion.part.php"; 
+        require_once __DIR__ . '/inicio.part.php';
+        require_once __DIR__ . "/navegacion.part.php"; 
     ?>
 
     <!-- Page Header Start -->
@@ -26,10 +26,6 @@
                                         required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
-                                        required="required" />
-                                </div>
-                                <div class="form-group">
                                     <div class="password" id="password" data-target-input="nearest">
                                         <input type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Contraseña" data-target="#date" data-toggle="datetimepicker"/>
                                     </div>
@@ -45,5 +41,3 @@
         </div>
     </div>
     <!-- Menu End -->
-
-    <?php require_once __DIR__ . '/../controllers/fin.part.php'; ?>
