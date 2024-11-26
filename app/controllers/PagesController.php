@@ -2,7 +2,9 @@
 
 namespace youllusion\app\controllers;
 
+use youllusion\app\repository\PublicacionesRepository;
 use youllusion\core\Response;
+use youllusion\core\App;
 
 class PagesController {
 
@@ -11,9 +13,12 @@ class PagesController {
      */
     public function index() {
 
+        $publicaciones = App::getRepository( PublicacionesRepository::class)->findAll();
+
         Response::renderView(
             'index',
-            'layout');
+            'layout',
+            compact('publicaciones'));
     }
     
 

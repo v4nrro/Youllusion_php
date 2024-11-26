@@ -59,7 +59,7 @@ class Router {
                     throw new AuthenticationException('Acceso no autorizado');
                     
                     else
-                    $this->redirect('login'); // Si el usuario no se ha logueado, redireccionamos al login// Comprobamos si se está logueado
+                    $this->redirect('iniciar-sesion'); // Si el usuario no se ha logueado, redireccionamos al login// Comprobamos si se está logueado
                 }
                 else {
                     $parameters = $this->getParametersRoute($route, $matches);
