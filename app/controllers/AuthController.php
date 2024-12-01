@@ -10,6 +10,7 @@ use youllusion\app\repository\UsuariosRepository;
 use youllusion\core\App;
 use youllusion\app\entity\Usuario;
 use youllusion\core\Security;
+use youllusion\app\utils\File;
 
 class AuthController {
    
@@ -83,11 +84,17 @@ class AuthController {
             if (!isset($_POST['re-password']) || empty($_POST['re-password']) || $_POST['password'] !== $_POST['re-password'])
             throw new ValidationException('Los dos password deben ser iguales');
 
+            $tiposAceptados = ['image/jpeg', 'image/gif', 'image/png'];
+            $avatar = new File('avatar', $tiposAceptados);
+                
+            $avatar->saveUploadFile(Usuario::RUTA_USUARIO_AVATAR);
+                    
             $password = Security::encrypt($_POST['password']);
             $usuario = new Usuario();
             $usuario->setUsername($_POST['username']);
             $usuario->setRole('ROLE_USER');
             $usuario->setPassword($password);
+            $usuario->setAvatar($avatar->getFileName());
 
             App::getRepository(UsuariosRepository::class)->save($usuario);
 

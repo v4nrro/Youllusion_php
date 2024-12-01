@@ -9,12 +9,16 @@ class Usuario implements IEntity {
 	private $username;
     private $password;
     private $role;
+    private $avatar;
+
+    const RUTA_USUARIO_AVATAR = '/public/images/avatares/';
 	
-	public function __construct($username = "", $password = "", $role = "") {
+	public function __construct($username = "", $password = "", $role = "", $avatar="") {
 		$this->id = null;
 		$this->username = $username;
         $this->password = $password;
         $this->role = $role;
+        $this->avatar = $avatar;
 	}
 	
     // Getters
@@ -25,6 +29,10 @@ class Usuario implements IEntity {
 	public function getUsername() {
 		return $this->username;
 	}
+
+    public function getAvatar() {
+		return $this->avatar;
+	}
 	
     public function getPassword() {
         return $this->password;
@@ -32,6 +40,10 @@ class Usuario implements IEntity {
     
     public function getRole() {
         return $this->role;
+    }
+
+    public function getUrlAvatar(){
+        return self::RUTA_USUARIO_AVATAR . $this->getAvatar();
     }
 
     // Setters
@@ -42,6 +54,11 @@ class Usuario implements IEntity {
     
     public function setPassword(string $password) : Usuario{
         $this->password = $password;
+        return $this;
+    }
+
+    public function setAvatar(string $avatar) : Usuario{
+        $this->avatar = $avatar;
         return $this;
     }
 
@@ -56,7 +73,8 @@ class Usuario implements IEntity {
             'id' => $this->getId(),
             'username' => $this->getUsername(),
             'password' => $this->getPassword(),
-            'role' => $this->getRole()
+            'role' => $this->getRole(),
+            'avatar' => $this->getAvatar()
         ];
     }
 

@@ -76,6 +76,24 @@ abstract class QueryBuilder
         return $result[0]; // La consulta devolverá un array con 1 solo elemento.
     }
 
+    /**
+     * @param int $id
+     * @return IEntity
+     * @throws NotFoundException
+     * @throws QueryException
+     */
+    public function findByUserId(int $id)
+    {
+        $sql = "SELECT * FROM $this->table WHERE userId=$id";
+        return $this->executeQuery($sql);
+    }
+
+    public function delete(int $id): void
+    {
+        $sql = "DELETE FROM $this->table WHERE id=$id";
+        $this->connection->exec($sql);
+    }
+
     public function executeTransaction(callable $fnExecuteQuerys)
     {
         try {
@@ -98,6 +116,26 @@ abstract class QueryBuilder
             $updates .= $key . '=:' . $key;
         }
         return $updates;
+    }
+
+    public function updateRol(int $id, string $rol){
+        $sql = "UPDATE $this->table SET role='$rol' WHERE id=$id";
+        $this->connection->exec($sql);
+    }
+
+    public function updateUsername(int $id, string $username){
+        $sql = "UPDATE $this->table SET username='$username' WHERE id=$id";
+        $this->connection->exec($sql);
+    }
+
+    public function updatePassword(int $id, string $password){
+        $sql = "UPDATE $this->table SET password='$password' WHERE id=$id";
+        $this->connection->exec($sql);
+    }
+
+    public function updateAvatar(int $id, string $avatar){
+        $sql = "UPDATE $this->table SET avatar='$avatar' WHERE id=$id";
+        $this->connection->exec($sql);
     }
 
     public function update(IEntity $entity): void

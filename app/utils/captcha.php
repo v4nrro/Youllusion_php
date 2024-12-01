@@ -2,7 +2,7 @@
     header('Content-Type: image/png');
 
     session_start();
-    
+
     $captcha = "";
     $totalCharacteres = random_int(5,8); // Longitud máxima del captcha
     $possiblesLetras = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -33,12 +33,12 @@
     imagefill($imagen, 0, 0, $colorAzul);
     $backgroundColor = imagecolorallocate($imagen,255,255,255);
     
-    for( $contadorLineas=0; $contadorLineas<$randomLineas; $contadorLineas++ ) {
+    for( $contadorLineas=0; $contadorLineas < $randomLineas; $contadorLineas++ ) {
         imageline($imagen,rand(0,$ancho),rand(0,$alto),rand(0,$ancho),rand(0,$alto+20),$colorNegro);
     }
 
     imagettftext($imagen,$captchaFontSize,0,4,$alto,$colorNegro,$captchaFont,$captcha);
-    imagepng ($imagen);
+    imagepng($imagen);
     imagedestroy($imagen);
 
     $_SESSION['captchaGenerado'] = $captcha; // Guardamos el captcha generado en una variable de sesión

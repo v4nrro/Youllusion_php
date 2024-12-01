@@ -20,9 +20,13 @@
             <!-- Descripción -->
             <p class="m-0"><?= $publicacion->getDescripcion(); ?></p>
 
-            <!-- Comentario? -->
-
-
+            <!-- Borrar evento si es mio -->
+             <?php if($_SESSION['loguedUser'] === $publicacion->getUserId()) :?>
+                <form method="POST" action="/detalle/borrar">
+                    <input type="hidden" name="id" value="<?= $publicacion->getId() ?>">
+                    <button type="submit" class="btn btn-danger">Borrar detalle</button>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </div>

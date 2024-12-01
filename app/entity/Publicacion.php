@@ -10,22 +10,28 @@
          */
         
         private $id;  
-        private $imagen, $titulo, $descripcion;
+        private $imagen, $titulo, $descripcion, $userId;
 
         const RUTA_IMAGENES_PUBLICACIONES = '/public/images/publicaciones/';
 
         public function __construct($imagen = "", $titulo = "", 
-        $descripcion = "") {
+        $descripcion = "", $userId = 0) {
 
             $this->id = null;
             $this->imagen = $imagen;
             $this->titulo = $titulo;
             $this->descripcion = $descripcion;
+            $this->userId = $userId;
         }
 
         // Setters
         public function setImagen(string $imagen) : Publicacion {
             $this->imagen = $imagen;
+            return $this;
+        }
+
+        public function setUserId(int $userId) : Publicacion {
+            $this->userId = $userId;
             return $this;
         }
 
@@ -42,6 +48,10 @@
         // Getters
         public function getImagen(){
             return $this->imagen;
+        }
+
+        public function getUserId(){
+            return $this->userId;
         }
 
         public function getTitulo(){
@@ -71,7 +81,8 @@
                 'id' => $this->getId(),
                 'imagen' => $this->getImagen(),
                 'titulo' => $this->getTitulo(),
-                'descripcion' => $this->getDescripcion()
+                'descripcion' => $this->getDescripcion(),
+                'userId' => $this->getUserId()
             ];
         }
     }

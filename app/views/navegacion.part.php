@@ -5,7 +5,7 @@
 <div class="container-fluid p-0 nav-bar">
     <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
         <a href="/" class="navbar-brand px-lg-4 m-0">
-            <h1 class="m-0 display-4 text-uppercase text-white">YOULLUSION</h1>
+            <h1 class="m-0 display-8 text-uppercase text-white">YOULLUSION</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -63,11 +63,23 @@
                      }
                     ?>">Contacto</a>
 
+                <a href="/mis-publicaciones/<?php echo $app['user']->getId()?>" class="nav-item nav-link<?php 
+                    if (Utils::esOpcionMenuActiva('/mis-publicaciones')==true){
+                        echo ' active';
+                     }
+                ?>">Mis Publicaciones</a>
+
+                <a href="/perfil/<?php echo $app['user']->getId()?>" class="nav-item nav-link<?php 
+                    if (Utils::esOpcionMenuActiva('/mi-perfil')==true){
+                        echo ' active';
+                     }
+                ?>">Mi Perfil</a>
+
                 <a href="/cerrar-sesion" class="nav-item nav-link<?php 
                     if (Utils::esOpcionMenuActiva('/cerrar-sesion')==true){
                         echo ' active';
                      }
-                ?>">Cerrar Sesion</a>
+                ?>">Cerrar Sesion (<?php echo $app['user']->getUsername() ?>)</a>
 
             <?php endif; ?>
 

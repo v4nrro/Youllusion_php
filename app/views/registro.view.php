@@ -32,7 +32,7 @@
                 <div class="col-lg-6">
                     <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
                         <h1 class="text-white mb-4 mt-5">Regístrate</h1>
-                        <form class="mb-5" action="/check-registro" method="post">
+                        <form class="mb-5" action="/check-registro" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input name="username" type="text" class="form-control bg-transparent border-primary p-4" placeholder="Nombre de usuario"
                                     required="required" />
@@ -46,6 +46,9 @@
                                 <div class="password" id="repeat-password" data-target-input="nearest">
                                     <input name="re-password" type="password" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Repite tu contraseña" data-target="#date" data-toggle="datetimepicker"/>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <input name="avatar" type="file" class="form-control-file" id="archivo">
                             </div>
                             <div>
                                 <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">ENVIAR</button>
