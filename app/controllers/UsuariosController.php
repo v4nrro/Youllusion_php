@@ -22,11 +22,12 @@ class UsuariosController
  function listaUsuarios() {
 
         $usuarios = App::getRepository(UsuariosRepository::class)->findAll();
+        $mensaje = FlashMessage::get('mensaje');
 
         Response::renderView(
             'lista-usuarios',
             'layout',
-            compact('usuarios')
+            compact('usuarios', 'mensaje')
         );
     }
 
@@ -34,6 +35,7 @@ class UsuariosController
         $id = $_POST['id'];
         $rolSeleccionado = $_POST['role'];
 
+        FlashMessage::set('mensaje' , "Se ha cambiado el rol correctamente");
         App::getRepository(UsuariosRepository::class)->updateRol($id, $rolSeleccionado);
         App::get('router')->redirect('lista-usuarios');        
     }
@@ -57,12 +59,13 @@ class UsuariosController
     public function miPerfil($id){
         $usuariosRepository = App::getRepository(UsuariosRepository::class);
         $usuario = $usuariosRepository->find($id);
+        $mensaje = FlashMessage::get('mensaje');
         
         if($_SESSION['loguedUser'] === $usuario->getId()){
             Response::renderView(
                 'mi-perfil',
                 'layout',
-                compact('usuario')
+                compact('usuario', 'mensaje')
             );
         }
         else{
@@ -76,6 +79,7 @@ class UsuariosController
 
         App::getRepository(UsuariosRepository::class)->updateUsername($userId, $newUsername);
 
+        FlashMessage::set('mensaje' , "Se ha cambiado el usuario correctamente");
         App::get('router')->redirect("perfil/$userId");
     }
 
@@ -85,7 +89,8 @@ class UsuariosController
         $password = Security::encrypt($_POST['password']);
 
         App::getRepository(UsuariosRepository::class)->updatePassword($userId, $password);
-
+        
+        FlashMessage::set('mensaje' , "Se ha cambiado la contraseña correctamente");
         App::get('router')->redirect("perfil/$userId");
     }
 
@@ -99,7 +104,7 @@ class UsuariosController
 
         App::getRepository(UsuariosRepository::class)->updateAvatar($userId, $avatar->getFileName());
 
-
+        FlashMessage::set('mensaje' , "Se ha cambiado el avatar correctamente");
         App::get('router')->redirect("perfil/$userId");
     }
 }
